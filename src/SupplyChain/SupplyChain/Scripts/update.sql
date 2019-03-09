@@ -1,19 +1,16 @@
 ﻿--##1
-CREATE TABLE [TestTable](
+CREATE TABLE [User](
     [Id] [int] IDENTITY(1, 1) PRIMARY KEY,
-    [Name] [nvarchar](250) NOT NULL,
-    [UpdatedDate] [nchar](10) NOT NULL)
+    [FirstName] [nvarchar](250) NOT NULL,
+    [LastName] [nvarchar](250) NOT NULL,
+    [UpdatedDate] [datetime] NOT NULL)
+GO
+
+INSERT INTO [User] ([FirstName], [LastName], [UpdatedDate])
+     VALUES ('Yuriy', 'Pelekh', GETUTCDATE())
 GO
 
 --##2
-INSERT INTO [TestTable] ([Name], [UpdatedDate])
-     VALUES ('Test Item', GETUTCDATE())
-GO
-
---##3
-DELETE FROM [TestTable]
-GO
-
---##4
-DROP TABLE [TestTable]
+INSERT INTO [User] ([FirstName], [LastName], [UpdatedDate])
+     VALUES ('Iryna', 'Verbenko', GETUTCDATE())
 GO
