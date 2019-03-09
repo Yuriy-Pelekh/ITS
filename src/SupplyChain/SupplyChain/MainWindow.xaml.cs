@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using SupplyChain.ViewModels;
 
 namespace SupplyChain
 {
@@ -10,6 +11,7 @@ namespace SupplyChain
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 }
