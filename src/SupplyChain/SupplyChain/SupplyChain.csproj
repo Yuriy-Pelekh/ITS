@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Database.Versioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Database.Versioning.1.0.0-beta.36\lib\netstandard2.0\Database.Versioning.dll</HintPath>
+      <HintPath>..\packages\Database.Versioning.1.0.0-beta.37\lib\netstandard2.0\Database.Versioning.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

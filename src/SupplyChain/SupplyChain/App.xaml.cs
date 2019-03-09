@@ -12,10 +12,9 @@ namespace SupplyChain
         {
             var connectionString = ConfigurationManager.ConnectionStrings["Main"].ConnectionString;
             var database = new Database.Versioning.Database(connectionString);
-            const string databaseName = "ITS";
-            if (!database.Exists(databaseName))
+            if (!database.Exists())
             {
-                database.Create(databaseName);
+                database.Create();
             }
             database.Update();
         }
