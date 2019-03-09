@@ -2,7 +2,7 @@
 
 namespace SupplyChain.ViewModels
 {
-    public class UserViewModel : ViewModelBase
+    public class UserViewModel : BaseViewModel
     {
         private int _id;
         private string _firstName;

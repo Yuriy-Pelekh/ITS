@@ -6,7 +6,7 @@ using Dapper;
 
 namespace SupplyChain.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : BaseViewModel
     {
         private string _connectionString;
 

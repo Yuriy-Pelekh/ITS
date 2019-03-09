@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace SupplyChain.ViewModels
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
