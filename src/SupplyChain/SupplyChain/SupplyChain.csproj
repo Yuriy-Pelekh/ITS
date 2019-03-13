@@ -39,7 +39,7 @@
       <HintPath>..\packages\Dapper.1.60.1\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="Database.Versioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Database.Versioning.1.0.0-beta.37\lib\netstandard2.0\Database.Versioning.dll</HintPath>
+      <HintPath>..\packages\Database.Versioning.1.0.38.67\lib\netstandard2.0\Database.Versioning.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
