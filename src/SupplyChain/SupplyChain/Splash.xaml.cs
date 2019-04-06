@@ -30,7 +30,7 @@ namespace SupplyChain
             dT.Start();
         }
         private void dt_Tick(object sender,EventArgs e) {
-            DashBoard db = new DashBoard();
+            ProductWindow db = new ProductWindow();
             db.Show();
             dT.Stop();
             this.Close();
