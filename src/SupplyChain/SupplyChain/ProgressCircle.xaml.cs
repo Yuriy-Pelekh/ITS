@@ -21,7 +21,6 @@ namespace SupplyChain
         public int SpinnerHeight { get; set; } = 0;
         public int SpinnerWidth { get; set; } = 0;
 
-
         // start positions
         public EllipseStartPosition EllipseN { get; private set; }
         public EllipseStartPosition EllipseNE { get; private set; }
@@ -61,32 +60,26 @@ namespace SupplyChain
             return new EllipseStartPosition() { Left = left, Top = top };
         }
 
-
         protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.Property.Name == "Height")
             {
                 SpinnerHeight = Convert.ToInt32(e.NewValue);
             }
-
             if (e.Property.Name == "Width")
             {
                 SpinnerWidth = Convert.ToInt32(e.NewValue);
             }
-
             if (SpinnerHeight > 0 && SpinnerWidth > 0)
             {
                 initialSetup();
             }
-
             base.OnPropertyChanged(e);
         }
     }
-
     public struct EllipseStartPosition
     {
         public float Left { get; set; }
         public float Top { get; set; }
     }
 }
-
