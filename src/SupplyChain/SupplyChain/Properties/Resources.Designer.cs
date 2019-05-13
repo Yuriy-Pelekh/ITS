@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SupplyChain.Properties {
+namespace SupplyChain.Properties
+{
     using System;
     
     
