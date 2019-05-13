@@ -53,7 +53,8 @@ namespace SupplyChain.Properties
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture
+        {
             get
             {
                 return resourceCulture;
