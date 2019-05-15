@@ -1,0 +1,40 @@
+﻿<Window x:Class="SupplyChain.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="132*"/>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="227*"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="UserListView" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Users, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>
+                            <Run Text="{Binding FirstName}"/>
+                            <Run Text="{Binding LastName}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Column="1" Margin="5px,0,5px,5px" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding SelectedItem.FirstName, ElementName=UserListView, Mode=TwoWay}" Margin="0,0,5px,0" VerticalAlignment="Top"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SelectedItem.LastName, ElementName=UserListView, Mode=TwoWay}" VerticalAlignment="Top"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="Save" Command="{Binding SaveCommand}" Width="100px" Height="25px" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5px"/>
+        </Grid>
+    </Grid>
+</Window>
