@@ -8,7 +8,6 @@ namespace SupplyChain.ViewModels
 {
     public class ProductViewModel : BaseViewModel
     {
-       
         private string _name;
         private string _price;
         private int _id;
@@ -46,8 +45,6 @@ namespace SupplyChain.ViewModels
 
         public ProductViewModel()
         {
-
-
         }
 
         public ProductViewModel(Entities.Product product)
@@ -56,6 +53,5 @@ namespace SupplyChain.ViewModels
             _name = product.Name;
             _price = product.Price;         
         }
-
     }
 }
