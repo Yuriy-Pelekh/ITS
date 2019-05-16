@@ -22,7 +22,6 @@ namespace SupplyChain
         public DashBoard()
         {
             InitializeComponent();
-           
         }
     }
 }
