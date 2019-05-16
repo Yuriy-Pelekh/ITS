@@ -14,3 +14,4 @@ GO
 INSERT INTO [User] ([FirstName], [LastName], [UpdatedDate])
      VALUES ('Iryna', 'Verbenko', GETUTCDATE())
 GO
+
