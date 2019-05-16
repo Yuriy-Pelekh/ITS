@@ -7,8 +7,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="132*"/>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="227*"/>
         </Grid.ColumnDefinitions>
         <ListView x:Name="UserListView" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Users, Mode=TwoWay}">
             <ListView.ItemTemplate>
@@ -22,7 +23,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Grid Grid.Column="1" Margin="5px,0,5px,5px">
+        <Grid Grid.Column="1" Margin="5px,0,5px,5px" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

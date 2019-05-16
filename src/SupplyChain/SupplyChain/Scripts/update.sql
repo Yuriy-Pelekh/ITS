@@ -14,3 +14,20 @@ GO
 INSERT INTO [User] ([FirstName], [LastName], [UpdatedDate])
      VALUES ('Iryna', 'Verbenko', GETUTCDATE())
 GO
+
+--##3
+CREATE TABLE [Product](
+    [Id] [int] IDENTITY(1, 1) PRIMARY KEY,
+    [Name] [nvarchar](250) NOT NULL,
+    [Price] [int] NOT NULL  )
+GO
+
+--##4
+INSERT INTO [Product] ([Name], [Price])
+     VALUES ('Bread', 14 )
+GO
+
+--##5 
+ALTER TABLE [Product]
+ADD [Image] varbinary(MAX) NOT NULL
+
