@@ -14,12 +14,14 @@ namespace SupplyChain.ViewModels
 
         public ProductWindowViewModel()
         {
+
             _connectionString = ConfigurationManager.ConnectionStrings["Main"].ConnectionString;
 
             Products = new ObservableCollection<ProductViewModel>();
 
             using (var connection = new SqlConnection(_connectionString))
             {
+
                 var products = connection.Query<Entities.Product>("SELECT * FROM [Product]");
                 foreach (var product in products)
                 {
@@ -32,7 +34,7 @@ namespace SupplyChain.ViewModels
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var sql = @"UPDATE [Product] SET Name=@Name, Price=@Price WHERE Id=@Id";
+                var sql = @"UPDATE [Product] SET Name=@Name, Price=@Price,Image=@Image WHERE Id=@Id";
 
                 foreach (var product in Products)
                 {

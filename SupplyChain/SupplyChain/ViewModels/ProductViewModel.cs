@@ -12,6 +12,8 @@ namespace SupplyChain.ViewModels
         private string _name;
         private string _price;
         private int _id;
+        private byte[] _image;
+        private string _imgPath;
 
         public int Id
         {
@@ -43,18 +45,44 @@ namespace SupplyChain.ViewModels
                 }
             }
         }
+        public string imgPath
+        {
+            get { return _imgPath; }
+            set
+            {
+                if (_imgPath != value)
+                {
+                    _imgPath = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        public byte[] Image
+        {
+            get { return _image; }
+            set
+            {
+                if (_image != value)
+                {
+                    _image = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         public ProductViewModel()
         {
 
-
+        
         }
 
         public ProductViewModel(Entities.Product product)
         {
             _id = product.Id;
             _name = product.Name;
-            _price = product.Price;         
+            _price = product.Price;
+            _image = product.Image;
+            _imgPath = product.imgPath;
         }
 
     }

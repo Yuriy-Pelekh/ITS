@@ -29,5 +29,5 @@ GO
 
 --##5 
 ALTER TABLE [Product]
-ADD [Image] varbinary(MAX) NOT NULL
+ADD [Image] image
 
