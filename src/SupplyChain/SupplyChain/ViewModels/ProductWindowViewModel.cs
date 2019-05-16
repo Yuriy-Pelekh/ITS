@@ -34,7 +34,7 @@ namespace SupplyChain.ViewModels
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var sql = @"UPDATE [Product] SET Name=@Name, Price=@Price,Image=@Image WHERE Id=@Id";
+                var sql = @"UPDATE [Product] SET Name=@Name, Price=@Price WHERE Id=@Id";
 
                 foreach (var product in Products)
                 {

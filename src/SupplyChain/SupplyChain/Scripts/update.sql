@@ -28,6 +28,6 @@ INSERT INTO [Product] ([Name], [Price])
 GO
 
 --##5 
-ALTER TABLE [Product]
-ADD [Image] varbinary(MAX) NOT NULL
-
+	ALTER TABLE [Product]
+	ADD  [Image] image ,
+       [imgPath] nvarchar(100)

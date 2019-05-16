@@ -36,23 +36,36 @@ namespace SupplyChain
             SqlConnection con = new SqlConnection(constr);
             con.Open();
 
-            string da = "Select imgPath from Product";
+            string da = "Select * from Product";
             SqlCommand command = new SqlCommand(da, con);
             SqlDataReader reader = command.ExecuteReader();
-            string count;
+
             if (reader.Read())
             {
-                count = Convert.ToString(reader[0]);
-                string uRl = count;
-                ImageSourceConverter imgs = new ImageSourceConverter();
-                image1.SetValue(Image.SourceProperty, imgs.ConvertFromString(uRl));
+                
+                byte[] data = (byte[])reader.GetValue(3);
+                image1.Source = ByteToImage(data);
+
+                /* ImageSourceConverter imgs = new ImageSourceConverter();
+                 image1.SetValue(Image.SourceProperty, imgs.ConvertFromString(uRl));*/
             }
             reader.Close();
-            
-           
-
             DataContext = new ProductWindowViewModel();
         }
+
+     
+            public static ImageSource ByteToImage(byte[] imageData)
+            {
+                BitmapImage biImg = new BitmapImage();
+                MemoryStream ms = new MemoryStream(imageData);
+                biImg.BeginInit();
+                biImg.StreamSource = ms;
+                biImg.EndInit();
+
+                ImageSource imgSrc = biImg as ImageSource;
+
+                return imgSrc;
+            }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
