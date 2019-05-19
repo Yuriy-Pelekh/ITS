@@ -5,6 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <TabControl x:Name="Users">
+        <TabItem x:Name="users">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">Users</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -36,4 +44,14 @@
             <Button Grid.Column="1" Grid.Row="1" Content="Save" Command="{Binding SaveCommand}" Width="100px" Height="25px" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5px"/>
         </Grid>
     </Grid>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem x:Name="Orders">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">Orders</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+        </TabItem>
+    </TabControl>
 </Window>
