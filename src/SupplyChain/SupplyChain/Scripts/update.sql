@@ -27,5 +27,5 @@ INSERT INTO [Product] ([Name], [Price])
 GO
 
 ALTER TABLE [Product]
-    ADD [Image] varbinary(MAX) NOT NULL
+    ADD [Image] varbinary(MAX) NULL
 GO
