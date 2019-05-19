@@ -12,5 +12,4 @@ GO
 
 INSERT INTO [Version] ([Version], [UpdatedDate])
      VALUES (0, GETUTCDATE())
-
 GO
