@@ -14,7 +14,6 @@ namespace SupplyChain.ViewModels
 
         public ProductWindowViewModel()
         {
-
             _connectionString = ConfigurationManager.ConnectionStrings["Main"].ConnectionString;
 
             Products = new ObservableCollection<ProductViewModel>();

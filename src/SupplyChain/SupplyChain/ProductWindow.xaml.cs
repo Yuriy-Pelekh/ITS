@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
+using SupplyChain.ViewModels;
+using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using SupplyChain.ViewModels;
-using Microsoft.Win32;
-using System.Data;
-using System.IO;
-using System.Data.SqlClient;
-using System.Drawing.Imaging;
-using System.Collections.ObjectModel;
-using System.Configuration;
-using Dapper;
 namespace SupplyChain
 {
     /// <summary>
@@ -29,11 +18,14 @@ namespace SupplyChain
     {
         DataSet ds;
         string strName, imageName;
-        string constr = @"Data Source=(local);Initial Catalog=ITS;Integrated Security=True";
+        private readonly string _connectionString;
         public ProductWindow()
         {
             InitializeComponent();
-            SqlConnection con = new SqlConnection(constr);
+
+            _connectionString = ConfigurationManager.ConnectionStrings["Main"].ConnectionString;
+
+            SqlConnection con = new SqlConnection(_connectionString);
             con.Open();
 
             string da = "Select * from Product";
@@ -42,7 +34,6 @@ namespace SupplyChain
 
             if (reader.Read())
             {
-                
                 byte[] data = (byte[])reader.GetValue(3);
                 image1.Source = ByteToImage(data);
 
@@ -53,7 +44,6 @@ namespace SupplyChain
             DataContext = new ProductWindowViewModel();
         }
 
-     
             public static ImageSource ByteToImage(byte[] imageData)
             {
                 BitmapImage biImg = new BitmapImage();
@@ -85,7 +75,7 @@ namespace SupplyChain
                     //Close a file stream
                     fs.Close();
 
-                    using (SqlConnection conn = new SqlConnection(constr))
+                    using (SqlConnection conn = new SqlConnection(_connectionString))
                     {
                         conn.Open();
                         string sql = "update Product set imgPath='" + imageName + "',Image=@img";

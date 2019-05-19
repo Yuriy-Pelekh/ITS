@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SupplyChain.ViewModels
+﻿namespace SupplyChain.ViewModels
 {
     public class ProductViewModel : BaseViewModel
     {
-       
         private string _name;
         private string _price;
         private int _id;
@@ -73,7 +66,6 @@ namespace SupplyChain.ViewModels
         public ProductViewModel()
         {
 
-        
         }
 
         public ProductViewModel(Entities.Product product)
@@ -84,6 +76,5 @@ namespace SupplyChain.ViewModels
             _image = product.Image;
             _imgPath = product.imgPath;
         }
-
     }
 }
