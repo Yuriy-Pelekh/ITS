@@ -14,7 +14,7 @@ namespace SupplyChain.Properties
 
 
     /// <summary>
-    ///   Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
     // Этот класс создан автоматически классом StronglyTypedResourceBuilder
     // с помощью такого средства, как ResGen или Visual Studio.
