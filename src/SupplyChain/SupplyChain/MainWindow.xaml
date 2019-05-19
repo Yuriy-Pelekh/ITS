@@ -56,6 +56,13 @@
                 </Grid>
             </TabItem.Content>
         </TabItem>
+        <TabItem x:Name="Products">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">Products</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+        </TabItem>
         <TabItem x:Name="Orders">
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
