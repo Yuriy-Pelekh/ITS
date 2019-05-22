@@ -35,9 +35,9 @@
             </Grid.RowDefinitions>
             <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding SelectedItem.Name, ElementName=ProductListView, Mode=TwoWay}" Margin="0,0,5px,0" VerticalAlignment="Top"/>
             <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SelectedItem.Price, ElementName=ProductListView, Mode=TwoWay}" VerticalAlignment="Top"/>
-            <Button  Grid.Column="1" Content="Select" Command="{Binding SelectCommand}"  Height="23" HorizontalAlignment="Left" Margin="28,61,0,0"  Name="btnBrowse" Click="btnBrowse_Click" VerticalAlignment="Top" Width="142" />
+            <Button  Grid.Column="1" Content="Select" Command="{Binding SelectCommand}"  Height="23" HorizontalAlignment="Left" Margin="28,61,0,0"  Name="btnBrowse"  VerticalAlignment="Top" Width="142" />
             <Image Grid.Column="0"  HorizontalAlignment="Left"  Height="200" Margin="10,48,0,0" VerticalAlignment="Top" Width="200" Name="image1" Grid.RowSpan="2"/>
-            <Button Grid.Column="1" Grid.Row="1" Content="Save" Command="{Binding SaveCommand}" Width="100px" Height="25px" VerticalAlignment="Bottom" Name="btnSave"  Click="btnSave_Click" HorizontalAlignment="Right" Margin="5px"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="Save" Command="{Binding SaveCommand}" Width="100px" Height="25px" VerticalAlignment="Bottom" Name="btnSave"   HorizontalAlignment="Right" Margin="5px"/>
         </Grid>
     </Grid>
 </Window>

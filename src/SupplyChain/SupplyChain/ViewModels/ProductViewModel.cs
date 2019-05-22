@@ -38,7 +38,7 @@
                 }
             }
         }
-        public string imgPath
+        public string ImgPath
         {
             get { return _imgPath; }
             set
@@ -50,7 +50,7 @@
                 }
             }
         }
-        public byte[] Image
+        public byte[] Photo
         {
             get { return _image; }
             set
@@ -74,7 +74,7 @@
             _name = product.Name;
             _price = product.Price;
             _image = product.Image;
-            _imgPath = product.imgPath;
+            _imgPath = product.ImgPath;
         }
     }
 }

@@ -8,6 +8,6 @@ namespace SupplyChain.Entities
         public string Name { get; set; }
         public string Price { get; set; }
         public byte[] Image { get; set; }
-        public string imgPath { get; set; }
+        public string ImgPath { get; set; }
     }
 }
