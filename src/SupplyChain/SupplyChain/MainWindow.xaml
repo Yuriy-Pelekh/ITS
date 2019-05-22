@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -10,7 +11,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="UserListView" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Users, Mode=TwoWay}">
+        <ListView x:Name="UserListView" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Users, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedUser , Mode=TwoWay  }">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -22,7 +23,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Grid Grid.Column="1" Margin="5px,0,5px,5px">
+        <Grid Grid.Column="1" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -31,9 +32,13 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding SelectedItem.FirstName, ElementName=UserListView, Mode=TwoWay}" Margin="0,0,5px,0" VerticalAlignment="Top"/>
-            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SelectedItem.LastName, ElementName=UserListView, Mode=TwoWay}" VerticalAlignment="Top"/>
-            <Button Grid.Column="1" Grid.Row="1" Content="Save" Command="{Binding SaveCommand}" Width="100px" Height="25px" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5px"/>
+            <TextBox x:Name="textBox1" x:FieldModifier="public" Grid.Column="0" Grid.Row="0" Text="{Binding SelectedItem.FirstName, ElementName=UserListView, Mode=OneWay}" Margin="0,0,5px,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="textBox2" x:FieldModifier="public" Grid.Column="1" Grid.Row="0" Text="{Binding SelectedItem.LastName, ElementName=UserListView, Mode=OneWay}" VerticalAlignment="Top"/>
+            <Button Name="savebtn"  Grid.Column="1" Grid.Row="1" Content="Save" Command="{Binding SaveCommand}" Width="100px" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5"/>
+            <Button Name="addbtn" Grid.Column="0" Grid.Row="1" Content="Add" Command="{Binding AddCommand}" Width="100px" Height="25px" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5"/>
+            <Button Name="removebtn" Grid.Column="0" Grid.Row="1" Content="Remove" Command="{Binding RemoveCommand}" Width="100px" Height="25px" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5"/>
         </Grid>
+
     </Grid>
+
 </Window>
