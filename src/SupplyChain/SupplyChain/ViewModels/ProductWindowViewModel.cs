@@ -16,12 +16,12 @@ namespace SupplyChain.ViewModels
 {
     class ProductWindowViewModel : BaseViewModel
     {
-        string strName, imageName;
+        private string strName;
+        private string imageName;
         private string _connectionString;
         private ProductWindow mainWin = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is ProductWindow) as ProductWindow;
         public ObservableCollection<ProductViewModel> Products { get; set; }
         
-
         public ProductWindowViewModel()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["Main"].ConnectionString;
@@ -30,17 +30,15 @@ namespace SupplyChain.ViewModels
 
             using (var connection = new SqlConnection(_connectionString))
             {
-
-
                 var products = connection.Query<Entities.Product>("SELECT * FROM [Product]");
  
                 foreach (var product in products)
                 {
                     Products.Add(new ProductViewModel(product));
                 }
+
                 foreach (var product in Products)
                 {
-
                     byte[] data = product.Photo;
                     BitmapImage biImg = new BitmapImage();
                     MemoryStream ms = new MemoryStream(data);
@@ -49,11 +47,10 @@ namespace SupplyChain.ViewModels
                     biImg.EndInit();
                     ImageSource imgSrc = biImg as ImageSource;
                     mainWin.image1.Source = imgSrc;
-
                 }
             }
-
         }
+
         public ICommand SelectCommand => new CommandHandler(() =>
         {
             try
@@ -80,29 +77,19 @@ namespace SupplyChain.ViewModels
         {
             try
             {
-                if (imageName != "")
+                if (imageName != string.Empty)
                 {
-                    FileStream fs = new FileStream(imageName, FileMode.Open, FileAccess.Read);
-
-                    //Initialize a byte array with size of stream
+                    var fs = new FileStream(imageName, FileMode.Open, FileAccess.Read);
                     byte[] imgByteArr = new byte[fs.Length];
-
-                    //Read data from the file stream and put into the byte array
                     fs.Read(imgByteArr, 0, Convert.ToInt32(fs.Length));
-
-                    //Close a file stream
                     fs.Close();
              
                     using (var connection = new SqlConnection(_connectionString))
                     {
                         connection.Open();
-                        // 3. add new parameter to command object
                         var sql = @"UPDATE [Product] SET Name=@Name, Price=@Price, imgPath='" + imageName + "',Image=@Photo WHERE Id=@Id";
                         using (SqlCommand cmd = new SqlCommand(sql, connection))
-
                         {
-                          
-                            //Pass byte array into database
                             foreach (var product in Products)
                             {
                                 product.Photo = imgByteArr;
@@ -112,11 +99,7 @@ namespace SupplyChain.ViewModels
                                     MessageBox.Show("Image added successfully.");
                                 }
                             }
-
                         }
-
-
-
                     }
                 }
             }
