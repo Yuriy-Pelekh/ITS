@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SupplyChain"
         xmlns:animated="SupplyChain.MainWindow"
+        xmlns:cm="clr-namespace:System.ComponentModel;assembly=System"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <TabControl x:Name="Users">
@@ -41,9 +42,11 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding SelectedItem.FirstName, ElementName=UserListView, Mode=TwoWay}" Margin="0,0,5px,0" VerticalAlignment="Top"/>
-                        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SelectedItem.LastName, ElementName=UserListView, Mode=TwoWay}" VerticalAlignment="Top"/>
-                        <Button Grid.Column="1" Grid.Row="1" Content="Save" Command="{Binding SaveCommand}" Width="100px" Height="25px" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5px"/>
+                        <TextBox  x:Name="textBox1" x:FieldModifier="public" Grid.Column="0" Grid.Row="0" Text="{Binding SelectedItem.FirstName, ElementName=UserListView, Mode=OneWay}" Margin="0,0,5px,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="textBox2" x:FieldModifier="public"  Grid.Column="1" Grid.Row="0" Text="{Binding SelectedItem.LastName, ElementName=UserListView, Mode=OneWay}" VerticalAlignment="Top"/>
+                        <Button Name="savebtn"  Grid.Column="1" Grid.Row="1" Content="Save" Command="{Binding SaveCommand}" Width="100px" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,-8"/>
+                        <Button Name="addbtn" Grid.Column="0" Grid.Row="1" Content="Add" Command="{Binding AddCommand}" Width="100px" Height="25px" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,-8"/>
+
                         <Button  HorizontalAlignment="Left" Margin="9.8,367.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="106" Grid.Column="1" Height="25">
                             <Button.Content >
                                 <DockPanel LastChildFill="True" Height="NaN" Width="NaN" HorizontalAlignment="Left">
@@ -53,7 +56,10 @@
                             </Button.Content>
                         </Button>
                     </Grid>
+                    <ProgressBar Name="progressBar" Margin="10,0,5,5" VerticalAlignment="Bottom" 
+                     MinHeight="20" Minimum="0" Maximum="100" Height="20" Grid.Column="1"/>
                 </Grid>
+
             </TabItem.Content>
         </TabItem>
         <TabItem x:Name="Products">
@@ -71,4 +77,13 @@
             </TabItem.Header>
         </TabItem>
     </TabControl>
+    <Window.Resources>
+
+        <cm:BackgroundWorker x:Key="backgroundWorker" 
+      WorkerReportsProgress="True" WorkerSupportsCancellation="True"
+      DoWork="backgroundWorker_DoWork" ProgressChanged="backgroundWorker_ProgressChanged" 
+      RunWorkerCompleted="backgroundWorker_RunWorkerCompleted"/>
+
+    </Window.Resources>
+
 </Window>
