@@ -15,12 +15,10 @@ using System.Windows.Threading;
 
 namespace SupplyChain
 {
-    /// <summary>
-    /// Interaction logic for Splash.xaml
-    /// </summary>
     public partial class Splash : Window
     {
         DispatcherTimer dT = new DispatcherTimer();
+        
         public Splash()
         {
             InitializeComponent();
@@ -29,12 +27,13 @@ namespace SupplyChain
             dT.Interval = new TimeSpan(0,0,3);
             dT.Start();
         }
-        private void dt_Tick(object sender,EventArgs e) {
-           ProductWindow db = new ProductWindow();
+
+        private void dt_Tick(object sender,EventArgs e)
+        {
+            ProductWindow db = new ProductWindow();
             db.Show();
             dT.Stop();
             this.Close();
         }
-       
     }
 }
