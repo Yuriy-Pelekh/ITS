@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 using SupplyChain.ViewModels;
 
 namespace SupplyChain
@@ -12,6 +13,23 @@ namespace SupplyChain
         {
             InitializeComponent();
             DataContext = new MainViewModel();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (LoadingSpinner ls = new LoadingSpinner(Simulator))
+            {
+                ls.Owner = this;
+                ls.ShowDialog();
+            }
+        }
+
+        void Simulator()
+        {
+            for(int i = 0; i < 1500; i++)
+            {
+                Thread.Sleep(5);
+            }
         }
     }
 }
