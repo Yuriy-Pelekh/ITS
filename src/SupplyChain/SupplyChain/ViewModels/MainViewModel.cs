@@ -12,7 +12,6 @@ namespace SupplyChain.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-
         private string _connectionString;
         private MainWindow mainWin = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is MainWindow) as MainWindow;
         public ObservableCollection<UserViewModel> Users { get; set; }
@@ -30,30 +29,23 @@ namespace SupplyChain.ViewModels
                     Users.Add(new UserViewModel(user));
                 }
             }
-
         }
-
 
         public ICommand SaveCommand => new CommandHandler(() =>
         {
-        using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
-                var sql = @"UPDATE [User] SET FirstName=@FirstName, LastName=@LastName, UpdatedDate=GETUTCDATE() WHERE Id=" + SelectedUser.Id;
+                var sql = @"UPDATE [User] SET FirstName=@FirstName, LastName=@LastName, UpdatedDate=GETUTCDATE() WHERE Id=@Id";
 
-                string text1 = mainWin.textBox1.Text;
-                string text2 = mainWin.textBox2.Text;
-                UserViewModel user = new UserViewModel();
-                user.FirstName = text1;
-                user.LastName = text2;
-
-                connection.Execute(sql, user);
-
+                foreach (var user in Users)
+                {
+                    connection.Execute(sql, user);
+                }
             }
         });
 
         public ICommand AddCommand => new CommandHandler(() =>
         {
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 var sql = @"INSERT INTO [User] ([FirstName], [LastName], [UpdatedDate]) VALUES (@FirstName, @LastName,GETUTCDATE())";
@@ -70,7 +62,6 @@ namespace SupplyChain.ViewModels
 
         public ICommand RemoveCommand => new CommandHandler(() =>
         {
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 var sql = @"DELETE FROM [User] WHERE Id =" + SelectedUser.Id;
@@ -84,7 +75,5 @@ namespace SupplyChain.ViewModels
                 connection.Execute(sql, user);
             }
         });
-
-
     }
 }
