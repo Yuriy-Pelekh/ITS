@@ -23,7 +23,6 @@ namespace SupplyChain
                 ls.ShowDialog();
             }
         }
-
         void Simulator()
         {
             for(int i = 0; i < 1500; i++)
