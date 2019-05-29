@@ -22,3 +22,18 @@ CREATE TABLE [Orders](
     [Name] [nvarchar](250) NOT NULL,
     [CreatedDate] [datetime] NOT NULL)
 GO
+
+--##4
+CREATE TABLE [Product](
+    [Id] [int] IDENTITY(1, 1) PRIMARY KEY,
+    [Name] [nvarchar](250) NOT NULL,
+    [Price] [int] NOT NULL  )
+GO
+
+INSERT INTO [Product] ([Name], [Price])
+    VALUES ('Bread', 14 )
+GO
+
+ALTER TABLE [Product]
+    ADD [Image] varbinary(MAX) NULL
+GO
