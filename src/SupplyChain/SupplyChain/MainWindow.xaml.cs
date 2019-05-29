@@ -14,7 +14,6 @@ namespace SupplyChain
             InitializeComponent();
             DataContext = new MainViewModel();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             using (LoadingSpinner ls = new LoadingSpinner(Simulator))
