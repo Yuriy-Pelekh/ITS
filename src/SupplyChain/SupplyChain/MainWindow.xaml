@@ -79,10 +79,7 @@
     </TabControl>
     <Window.Resources>
 
-        <cm:BackgroundWorker x:Key="backgroundWorker" 
-      WorkerReportsProgress="True" WorkerSupportsCancellation="True"
-      DoWork="backgroundWorker_DoWork" ProgressChanged="backgroundWorker_ProgressChanged" 
-      RunWorkerCompleted="backgroundWorker_RunWorkerCompleted"/>
+        <cm:BackgroundWorker x:Key="backgroundWorker" />
 
     </Window.Resources>
 
